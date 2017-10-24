@@ -11,15 +11,15 @@ export class AppComponent {
   title = 'app';
   contacts: any;
 
-  constructor(private http: Http, public addressBookService: AddressBookService) {
-    this.addressBookService.getContacts().subscribe(data => {
+  constructor(private http: Http) {
+    this.getContacts().subscribe(data => {
       console.log(data);
       this.contacts = data.contacts;
     });
   }
 
-  // getContacts() {
-  //   return this.http.get('http://ca-address-book.herokuapp.com/api/contacts')
-  //     .map((res: Response) => res.json());
-  // }
+  getContacts() {
+    return this.http.get('http://ca-address-book.herokuapp.com/api/contacts')
+      .map((res: Response) => res.json());
+  }
 }
